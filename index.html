@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Debashree 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(180deg, #ff9a9e, #fad0c4);
+  overflow-x: hidden;
+  color: #fff;
+}
+
+/* Floating Petals */
+.petal {
+  position: fixed;
+  top: -10px;
+  font-size: 18px;
+  animation: fall 10s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(360deg); }
+}
+
+/* Sparkles */
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  animation: sparkle 2s infinite alternate;
+}
+
+@keyframes sparkle {
+  from { opacity: 0.3; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1.3); }
+}
+
+/* Card */
+.card {
+  position: relative;
+  background: rgba(255,255,255,0.22);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 25px;
+  margin: 30px auto;
+  width: 90%;
+  max-width: 700px;
+  animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  text-align: center;
+  font-size: 32px;
+  position: relative;
+}
+
+.note {
+  font-size: 17px;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+/* Characters */
+.characters {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 25px;
+  font-size: 50px;
+}
+
+.bounce {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Buttons */
+button {
+  display: block;
+  margin: 15px auto;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 35px;
+  font-size: 18px;
+  cursor: pointer;
+  background: #fff;
+  color: #ff4d6d;
+  transition: transform 0.3s;
+}
+
+button:hover { transform: scale(1.1); }
+
+/* Special Buttons */
+.love-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>
+    For Debashree 💕
+    <span class="sparkle" style="top:-5px; left:10px;"></span>
+    <span class="sparkle" style="top:10px; right:15px;"></span>
+  </h1>
+
+  <div class="note">
+I loveeeee youuuuu sooo, sooo, sooo much that I can’t even express it to you.
+
+I know you are not my girlfriend, but you are my bestestestestestestestest girl friend — my cutie, my softie, my cute little penguin 😘  
+Whom I love the most in my life.
+
+I think Valentine’s Day is not just made for girlfriend-boyfriend relationships.  
+For me, this day is celebrated just to give some extra love to your loved ones, and for me, you are my Valentine.
+
+Thank you for being there with me.  
+Thanks for giving moral support, emotional support, and everything — especially those memories:  
+your hairband, our late-night talks, our photos, your photos, and the purest love in the form of friendship.
+
+Thank you.
+  </div>
+
+  <!-- MUSIC BUTTON -->
+  <button onclick="toggleMusic()" id="musicBtn">
+    ▶️ Play Music 🎶
+  </button>
+
+  <!-- LOVE BUTTONS -->
+  <div class="love-buttons">
+    <button onclick="alert('Always with you 💞')">💞 Always</button>
+    <button onclick="alert('Forever & always 🌸')">🌸 Forever</button>
+  </div>
+
+  <div class="characters">
+    <div class="bounce">🐧</div>
+    <div class="bounce">🐼</div>
+  </div>
+
+  <div class="footer">
+    — Shubh 💖
+  </div>
+</div>
+
+<!-- Hidden YouTube Player -->
+<iframe
+  id="ytplayer"
+  width="0"
+  height="0"
+  src="https://www.youtube.com/embed/2Vv-BfVoq4g?enablejsapi=1"
+  frameborder="0"
+  allow="autoplay">
+</iframe>
+
+<script>
+/* Falling petals */
+function createPetal() {
+  const petal = document.createElement("div");
+  petal.classList.add("petal");
+  petal.innerText = "🌸";
+  petal.style.left = Math.random() * 100 + "vw";
+  petal.style.animationDuration = (8 + Math.random() * 5) + "s";
+  document.body.appendChild(petal);
+  setTimeout(() => petal.remove(), 13000);
+}
+setInterval(createPetal, 500);
+
+/* Music control */
+let playing = false;
+function toggleMusic() {
+  const player = document.getElementById("ytplayer").contentWindow;
+  const btn = document.getElementById("musicBtn");
+  if (!playing) {
+    player.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+    btn.innerHTML = "⏸ Pause Music 🎶";
+    playing = true;
+  } else {
+    player.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+    btn.innerHTML = "▶️ Play Music 🎶";
+    playing = false;
+  }
+}
+</script>
+
+</body>
+</html>
